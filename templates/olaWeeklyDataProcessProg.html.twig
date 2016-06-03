@@ -1,0 +1,29 @@
+<div class="row">
+    {% if full %}
+        <div class="col-md-12">   
+        {% else %}
+            <div class="col-md-6">   
+
+            {% endif %}
+
+            <div class="well bs-component">
+                <p class="text-primary">{{proc_stage_header}}</p>
+                <div id="{{proc_stage}}_container" class="progress progress-striped active">
+                    <div class="progress-bar progress-bar-success" style="width: 0%"></div>
+                    <div class="progress-bar progress-bar-warning" style="width: 0%"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+        {% if full == false %}
+            <div class="col-md-6">             
+                <div class="well bs-component">
+                    {% if details %}
+                        <pre>{{ dump(details) }}</pre>
+                    {% else %}
+                        [WIP]: Check database logs for details for now.
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}    
+    </div>

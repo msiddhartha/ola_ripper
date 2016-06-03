@@ -1,0 +1,11 @@
+<script>
+    //  $(function () {
+    
+    $("#{{proc_stage}}_container .progress-bar-{{proc_log_level}}").width("{{proc_stage_pct}}%");
+
+    if ({{proc_stage_pct}} == 100) {
+        $("#{{proc_stage}}_container").removeClass("active");
+        $("#{{proc_stage}}_container").removeClass("progress-striped");
+    }
+    //});
+</script>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex">
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Material Design fonts -->
+        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Bootstrap -->
+        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Bootstrap Material Design -->
+        <link href="bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet">
+        <link href="bower_components/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
+        <link href="bower_components/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">        
+        <link href="dist/css/jquery.dropdown.css" rel="stylesheet">
+
+    </head>
+    <body>		
+        <div class="container">
+            <div class="col-md-12">
+                <div class="well bs-component">
+                    <div class="row">
+                        <h2 id="tables">{{ olaImportLegend }}</h2>
+                    </div>
+                    <form class="form-horizontal" method="POST" action="ola_ripper.php" enctype="multipart/form-data">
+                        <fieldset>
+
+                            <div class="form-group is-empty">
+                                <label for="period_start" class="col-md-2 control-label">Period Start</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <input type="text" name="period_start" id="period_start" class="form-control" placeholder="..">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group is-empty">
+                                <label for="period_end" class="col-md-2 control-label">Period End</label>
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <input type="text" name="period_end" id="period_end" class="form-control" placeholder="..">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group is-empty is-fileinput">
+                                <label for="inputFile" class="col-md-2 control-label">File (PDF)</label>
+
+                                <div class="col-md-10">
+                                    <div class="input-group">
+                                        <input type="text" readonly="" class="form-control" placeholder="Browse...">
+                                        <span class="input-group-btn input-group-sm">
+                                            <button type="button" class="btn btn-fab btn-fab-mini">
+                                                <i class="mdi-editor-attach-file"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                    <input type="file" name="ola_doc" id="inputFile">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="section_select" class="col-md-2 control-label">Section</label>
+
+                                <div class="col-md-10">
+                                    <select name="section_select" id="section_select" class="form-control">										
+                                        <option value="booking-details">Booking Details</option>
+                                        <option value="incentives">Incentives</option>
+                                        <option value="mbgCalc">MBG</option>
+                                        <option value="adjustments">Adjustments</option>
+                                        <option value="shareEarnings">Ola-Share Earnings</option>
+                                        <option value="shareCashCollected">Ola-Share Cash Collected</option>
+                                        <option value="deviceDataCharges">Device & Data Charges</option>
+                                        <option value="penalty">Penalty</option>
+                                        <option value="bonus">Bonus</option>
+                                        <option value="all">All</option>
+                                        <!--option disabled value="carLevelEarnings">Car Level Earnings</option>
+										<option disabled value="carLevelDeductions">Car Level Deductions</option-->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10 col-md-offset-2">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Import</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="step_num" value="2">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+        <script src="bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+        <script src="bower_components/momentjs/min/moment-with-locales.min.js"></script>
+        <script src="bower_components/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+        <script src="dist/js/jquery.dropdown.js"></script>
+        <script>
+            $(function () {
+                $('#period_start').bootstrapMaterialDatePicker({
+                    time: false,
+                    weekStart: 0,
+                    format: 'YYYY-MM-DD',
+                    clearButton: true
+                }).on('change', function (e, date) {
+                    $('#period_end').bootstrapMaterialDatePicker('setMinDate', date);
+                });
+
+                $('#period_end').bootstrapMaterialDatePicker({
+                    time: false,
+                    weekStart: 0,
+                    format: 'YYYY-MM-DD',
+                    clearButton: true
+                });
+
+                $("#section_select").dropdown({"autoinit": ".select"});
+
+                $.material.init();
+            });
+        </script>
+    </body>
+</html>

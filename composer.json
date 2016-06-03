@@ -1,0 +1,7 @@
+{
+    "require": {
+        "smalot/pdfparser": "*",
+        "neitanod/forceutf8": "^2.0",
+        "twig/twig": "~1.0"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ola_ripper",
+  "description": "Ola PDF data mining for financial and ride data",
+  "main": "index.js",
+  "authors": [
+    "sm@ysg.co.in"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "pdf-parse",
+    "xpdf",
+    "data-mining",
+    "regex"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
